@@ -3,7 +3,6 @@ CREATE TABLE Aviones (
     codigo_avion VARCHAR(10) PRIMARY KEY,
     modelo VARCHAR(50) NOT NULL,
     capacidad_max INT NOT NULL
-);
 
 CREATE TABLE Vuelos (
     numero_vuelo VARCHAR(10) PRIMARY KEY,
@@ -12,14 +11,14 @@ CREATE TABLE Vuelos (
     hora_salida TIME NOT NULL,
     codigo_avion VARCHAR(10) NOT NULL,
     FOREIGN KEY (codigo_avion) REFERENCES Aviones(codigo_avion)
-);
+    
 
 CREATE TABLE Pasajeros (
     documento VARCHAR(15) PRIMARY KEY,
     nombre_completo VARCHAR(80) NOT NULL,
     telefono VARCHAR(15),
     nacionalidad VARCHAR(30) NOT NULL
-);
+
 
 CREATE TABLE Reservas (
     documento VARCHAR(15) NOT NULL,
@@ -29,7 +28,7 @@ CREATE TABLE Reservas (
     PRIMARY KEY (documento, numero_vuelo, fecha_vuelo),
     FOREIGN KEY (documento) REFERENCES Pasajeros(documento),
     FOREIGN KEY (numero_vuelo) REFERENCES Vuelos(numero_vuelo)
-);
+
 
 -- REGISTROS DE EJEMPLO
 INSERT INTO Aviones VALUES 
